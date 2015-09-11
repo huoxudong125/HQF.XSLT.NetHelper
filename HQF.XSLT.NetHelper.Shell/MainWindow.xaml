@@ -8,45 +8,60 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid Margin="4" DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0">XML File:</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding XmlPath}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding XmlPath}" />
             <Button Grid.Row="0" Grid.Column="2" Command="{Binding BrowseXmlFileCommand}">Browse</Button>
-            
+
             <Label Grid.Row="1" Grid.Column="0">XSL File:</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding XslPath}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding XslPath}" />
             <Button Grid.Row="1" Grid.Column="2" Command="{Binding BrowseXslFileCommand}">Browse</Button>
 
             <Label Grid.Row="2" Grid.Column="0">Output Folder:</Label>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding OutputPath}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding OutputPath}" />
             <Button Grid.Row="2" Grid.Column="2" Command="{Binding BrowseOutPutFolderCommand}">Browse</Button>
-            
+
             <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
                     Margin="3"
                     Command="{Binding ConvertCommand}">
                 Convert XML using XSL
             </Button>
         </Grid>
-        <TextBox  Grid.Row="1" Grid.Column="0" Text="{Binding XmlContent}" ></TextBox>
-        <TextBox  Grid.Row="2" Grid.Column="0" Text="{Binding XslContent}" ></TextBox>
+
+        <GridSplitter Grid.Row="1"  Grid.Column="0"
+                         HorizontalAlignment="Stretch"
+                          VerticalAlignment="Bottom" Height="4"
+                          Background="Bisque" />
         
+        <TextBox  Grid.Row="1" Grid.Column="0" Text="{Binding XmlContent}"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Margin="0 0 0 5"/>
+        <TextBox  Grid.Row="2" Grid.Column="0" Text="{Binding XslContent}"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"/>
+
         <StatusBar  Grid.Row="3" Grid.Column="0">
             <ProgressBar Height="25" Value="60" Width="100"></ProgressBar>
         </StatusBar>

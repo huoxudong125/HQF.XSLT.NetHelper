@@ -129,7 +129,7 @@ namespace HQF.XSLT.NetHelper.Shell.ViewModel
                 transform.Load(xslfile);
 
                 XmlTextWriter writer = new XmlTextWriter(outfile, Encoding.UTF8);
-                //StreamWriter writer = new StreamWriter(outfile,false,Encoding.UTF8);
+                //StreamWriter writer = new HTMLTextWriter(outfile, false, Encoding.UTF8);
 
                 transform.Transform(doc, null, writer);
 
