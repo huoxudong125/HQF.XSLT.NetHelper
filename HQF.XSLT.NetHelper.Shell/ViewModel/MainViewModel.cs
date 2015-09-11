@@ -128,8 +128,8 @@ namespace HQF.XSLT.NetHelper.Shell.ViewModel
                 XslCompiledTransform transform = new XslCompiledTransform(true);
                 transform.Load(xslfile);
 
-                XmlTextWriter writer = new XmlTextWriter(outfile, Encoding.UTF8);
-                //StreamWriter writer = new HTMLTextWriter(outfile, false, Encoding.UTF8);
+                //XmlTextWriter writer = new XmlTextWriter(outfile, Encoding.UTF8);
+                var writer = new XmlHtmlWriter(outfile, Encoding.UTF8);
 
                 transform.Transform(doc, null, writer);
 
@@ -164,7 +164,7 @@ namespace HQF.XSLT.NetHelper.Shell.ViewModel
         private void OnBrowseXmlFile()
         {
             var openDialog = new OpenFileDialog();
-            openDialog.Filter = "xml File(*.xml) | *.xml";
+            openDialog.Filter = "xml File(*.xml) | *.xml|iCore Project File(*.icore) | *.iCore";
             var openResult = openDialog.ShowDialog();
             if (openResult.HasValue && openResult.Value)
             {

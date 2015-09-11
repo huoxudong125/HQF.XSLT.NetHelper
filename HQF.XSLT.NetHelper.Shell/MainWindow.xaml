@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HQF.XSLT.NetHelper.Shell"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Margin="4" DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
@@ -49,18 +51,32 @@
                          HorizontalAlignment="Stretch"
                           VerticalAlignment="Bottom" Height="4"
                           Background="Bisque" />
-        
-        <TextBox  Grid.Row="1" Grid.Column="0" Text="{Binding XmlContent}"
+
+        <avalonedit:TextEditor  Grid.Row="1" Grid.Column="0"
+                                HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Margin="0 0 0 5"
+                  FontFamily="Consolas"
+                    SyntaxHighlighting="XML"
+                    FontSize="10pt">    
+            <i:Interaction.Behaviors>
+                <local:AvalonEditBehaviour GiveMeTheText="{Binding XmlContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </i:Interaction.Behaviors>
+        </avalonedit:TextEditor>
+        <avalonedit:TextEditor  Grid.Row="2" Grid.Column="0"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
                   HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto"
-                  Margin="0 0 0 5"/>
-        <TextBox  Grid.Row="2" Grid.Column="0" Text="{Binding XslContent}"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch"
-                  HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto"/>
+                                FontFamily="Consolas"
+            SyntaxHighlighting="XML"
+            FontSize="10pt">        
+            <i:Interaction.Behaviors>
+                <local:AvalonEditBehaviour GiveMeTheText="{Binding XslContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </i:Interaction.Behaviors>
+        </avalonedit:TextEditor>
 
         <StatusBar  Grid.Row="3" Grid.Column="0">
             <ProgressBar Height="25" Value="60" Width="100"></ProgressBar>
