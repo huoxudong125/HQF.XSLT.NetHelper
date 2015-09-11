@@ -1,7 +1,7 @@
-version: 0.1.{build}
+version: 1.0.{build}
 build_script:
 - nuget restore
-release:HQF.XSLT.NetHelper-v$(appveyor_build_version)
+  release:HQF.XSLT.NetHelper-v$(appveyor_build_version)
   description: 'Release description'
   provider: GitHub
   draft: true
