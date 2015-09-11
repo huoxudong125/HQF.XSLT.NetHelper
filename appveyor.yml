@@ -1,0 +1,11 @@
+version: 0.1.{build}
+build_script:
+- nuget restore
+release:HQF.XSLT.NetHelper-v$(appveyor_build_version)
+  description: 'Release description'
+  provider: GitHub
+  draft: true
+  prerelease: true
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
