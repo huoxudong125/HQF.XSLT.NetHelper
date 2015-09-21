@@ -6,9 +6,17 @@
         xmlns:local="clr-namespace:HQF.XSLT.NetHelper.Shell"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid Margin="4" DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
+    <Window.Resources>
+      <ObjectDataProvider x:Key="OutputTypeValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+          <ObjectDataProvider.MethodParameters>
+              <x:Type TypeName="local:OutputTypes"/>
+          </ObjectDataProvider.MethodParameters>
+      </ObjectDataProvider>
+    </Window.Resources>
+        <Grid Margin="4" DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="50*" />
@@ -18,6 +26,7 @@
 
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -40,8 +49,13 @@
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding OutputPath}" />
             <Button Grid.Row="2" Grid.Column="2" Command="{Binding BrowseOutPutFolderCommand}">Browse</Button>
 
-            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
-                    Margin="3"
+            <Label Grid.Row="3" Grid.Column="0">Output Provider:</Label>
+            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Source={StaticResource OutputTypeValues}}" 
+                      SelectedItem="{Binding OutputProvider}"/>
+
+
+            <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                    Margin="4"
                     Command="{Binding ConvertCommand}">
                 Convert XML using XSL
             </Button>

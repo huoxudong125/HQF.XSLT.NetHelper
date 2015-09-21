@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -33,6 +34,7 @@ namespace HQF.XSLT.NetHelper.Shell.ViewModel
         private string _xmlPath;
         private string _xslContent;
         private string _xslPath;
+        private OutputTypes _outputProvider;
 
         /// <summary>
         ///     Initializes a new instance of the MainViewModel class.
@@ -91,6 +93,19 @@ namespace HQF.XSLT.NetHelper.Shell.ViewModel
             set { Set(() => XslContent, ref _xslContent, value); }
         }
 
+        public OutputTypes OutputProvider
+        {
+            get { return _outputProvider; }
+            set
+            {
+                Set(() => OutputProvider, ref _outputProvider, value);
+                if (_outputProvider == OutputTypes.JosnProvider)
+                {
+                    XslPath = Path.Combine(Environment.CurrentDirectory, "XML2XSLT.xslt");
+                }
+            }
+        }
+
         private void OnBrowseOutputFolder()
         {
             var saveFolder = new SaveFileDialog();
@@ -128,10 +143,19 @@ namespace HQF.XSLT.NetHelper.Shell.ViewModel
                 XslCompiledTransform transform = new XslCompiledTransform(true);
                 transform.Load(xslfile);
 
-                //XmlTextWriter writer = new XmlTextWriter(outfile, Encoding.UTF8);
-                var writer = new XmlHtmlWriter(outfile, Encoding.UTF8);
+                
+                if (OutputProvider == OutputTypes.HtmlProvider)
+                {
+                    var writer = new XmlHtmlWriter(outfile, Encoding.UTF8);
+                    transform.Transform(doc, null, writer);
+                }
+                else
+                {
+                    XmlTextWriter writer = new XmlTextWriter(outfile, Encoding.UTF8);
+                    transform.Transform(doc, null, writer);
+                }
 
-                transform.Transform(doc, null, writer);
+                
 
                 MessageBox.Show(String.Format("{0} in {1}ms", Path.GetFullPath(outfile), stopwatch.ElapsedMilliseconds));
 
