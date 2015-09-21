@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.XSLT.NetHelper.Shell", "HQF.XSLT.NetHelper.Shell\HQF.XSLT.NetHelper.Shell.csproj", "{56627E77-A1C8-41B9-A043-8CB37EA5657B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.XML.NetHelper", "HQF.XML.NetHelper\HQF.XML.NetHelper.csproj", "{05F3B783-A4A4-40C0-B338-A30CD265238E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.XML.UnitTest", "HQF.XML.UnitTest\HQF.XML.UnitTest.csproj", "{75D77B6A-C159-4AE2-90FC-6B50EA12644B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{56627E77-A1C8-41B9-A043-8CB37EA5657B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56627E77-A1C8-41B9-A043-8CB37EA5657B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56627E77-A1C8-41B9-A043-8CB37EA5657B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F3B783-A4A4-40C0-B338-A30CD265238E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F3B783-A4A4-40C0-B338-A30CD265238E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F3B783-A4A4-40C0-B338-A30CD265238E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F3B783-A4A4-40C0-B338-A30CD265238E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
