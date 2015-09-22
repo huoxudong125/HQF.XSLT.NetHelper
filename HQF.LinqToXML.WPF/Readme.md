@@ -15,3 +15,53 @@ The LinqToXmlDataBinding program is a Windows Presentation Foundation (WPF) appl
 6. Edit Selected Book enables the user to edit the values associated with the currently selected book entry.
 
 7. Add New Book enables the creation of a new book entry based on values entered by the user.
+
+
+##DataSource
+    <!-- Books provider and inline data -->
+        <ObjectDataProvider x:Key="LoadedBooks" ObjectType="{x:Type xlinq:XElement}" MethodName="Parse">
+            <ObjectDataProvider.MethodParameters>
+                <system:String xml:space="preserve">
+    <![CDATA[
+    <books xmlns="http://www.mybooks.com">
+    <book id="0">book zero</book>
+    <book id="1">book one</book>
+    <book id="2">book two</book>
+    <book id="3">book three</book>
+    </books>
+    ]]>                
+                </system:String>
+                <xlinq:LoadOptions>PreserveWhitespace</xlinq:LoadOptions>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+## How Bind XML To ListBox
+    <ListBox Name="lbBooks" Height="200" Width="415" ItemTemplate ="{StaticResource BookTemplate}">
+                <ListBox.ItemsSource>
+                    <Binding Path="Elements[{http://www.mybooks.com}book]"/>
+                </ListBox.ItemsSource>
+    </ListBox>
+
+##How add book into xml
+    XElement bookList = (XElement)((ObjectDataProvider)Resources["LoadedBooks"]).Data;
+
+    void OnAddBook(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tbAddID.Text) ||
+                String.IsNullOrEmpty(tbAddValue.Text))
+            {
+                MessageBox.Show("Please supply both a Book ID and a Value!", "Entry Error!");
+                return;
+            }
+            XElement newBook = new XElement(
+                                mybooks + "book",
+                                new XAttribute("id", tbAddID.Text),
+                                tbAddValue.Text);
+            bookList.Add("  ", newBook, "\r\n");
+        }
+
+##How to Remove the book
+    XElement selBook = (XElement)lbBooks.SelectedItem;
+            //Get next node before removing element.
+            XNode nextNode = selBook.NextNode;
+            selBook.Remove(); 
