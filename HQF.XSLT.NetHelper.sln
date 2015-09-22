@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.XML.NetHelper", "HQF.XM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.XML.UnitTest", "HQF.XML.UnitTest\HQF.XML.UnitTest.csproj", "{75D77B6A-C159-4AE2-90FC-6B50EA12644B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQF.LinqToXML.WPF", "HQF.LinqToXML.WPF\HQF.LinqToXML.WPF.csproj", "{D3F41A00-6B28-4B04-B932-E0ED8C7533BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D77B6A-C159-4AE2-90FC-6B50EA12644B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3F41A00-6B28-4B04-B932-E0ED8C7533BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3F41A00-6B28-4B04-B932-E0ED8C7533BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3F41A00-6B28-4B04-B932-E0ED8C7533BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3F41A00-6B28-4B04-B932-E0ED8C7533BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
